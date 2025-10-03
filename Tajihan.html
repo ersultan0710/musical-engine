@@ -1,0 +1,151 @@
+import React from "react";
+
+// Simple single-file React component (default export)
+// Tailwind CSS classes are used. This component is a complete landing page
+// with Header, Hero, Features, Pricing, Contact form and Footer.
+
+export default function App() {
+  return (
+    <div className="min-h-screen bg-gray-50 text-gray-900 antialiased">
+      {/* Container */}
+      <header className="bg-white shadow-sm sticky top-0 z-30">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-pink-500 flex items-center justify-center text-white font-bold">S</div>
+            <div>
+              <h1 className="text-lg font-semibold">SiteStudio</h1>
+              <p className="text-xs text-gray-500">Красивые сайты за минуты</p>
+            </div>
+          </div>
+
+          <nav className="hidden md:flex items-center gap-6 text-sm">
+            <a href="#features" className="hover:underline">Фичи</a>
+            <a href="#pricing" className="hover:underline">Тарифы</a>
+            <a href="#contact" className="hover:underline">Контакты</a>
+            <button className="ml-4 px-4 py-2 rounded-md bg-indigo-600 text-white text-sm shadow">Начать</button>
+          </nav>
+
+          <div className="md:hidden">
+            <button className="px-3 py-2 rounded-md border">Меню</button>
+          </div>
+        </div>
+      </header>
+
+      <main className="max-w-6xl mx-auto px-6 py-12">
+        {/* Hero */}
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div>
+            <h2 className="text-4xl md:text-5xl font-extrabold leading-tight">Создайте современный сайт — быстро и просто</h2>
+            <p className="mt-4 text-gray-600">Готовые блоки, адаптивный дизайн и лёгкая настройка. Запустите посадочную страницу или корпоративный сайт за считанные минуты.</p>
+
+            <div className="mt-6 flex gap-3">
+              <a href="#contact" className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-indigo-600 text-white font-medium shadow">Связаться</a>
+              <a href="#features" className="inline-flex items-center gap-2 px-5 py-3 rounded-lg border">Узнать больше</a>
+            </div>
+
+            <div className="mt-8 grid grid-cols-3 gap-4 text-sm text-gray-600">
+              <div className="flex flex-col">
+                <span className="font-semibold">99.9%</span>
+                <span className="text-xs">Аптайм</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="font-semibold">Лёгкий</span>
+                <span className="text-xs">Редактор</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="font-semibold">Мобильный</span>
+                <span className="text-xs">Дизайн</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-2xl p-6 shadow-lg">
+            <img src="https://images.unsplash.com/photo-1523475496153-3d6ccf3d5b60?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="preview" className="w-full h-64 object-cover rounded-lg" />
+            <div className="mt-4">
+              <h3 className="font-semibold">Пример блока</h3>
+              <p className="text-sm text-gray-600 mt-2">Этот блок демонстрирует, как будут выглядеть ваши секции — картинки, заголовки и краткие описания.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Features */}
+        <section id="features" className="mt-16">
+          <h3 className="text-2xl font-bold">Фичи</h3>
+          <p className="text-gray-600 mt-2">Набор готовых компонентов для быстрой сборки сайта.</p>
+
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <FeatureCard title="Адаптивный дизайн" desc="Подстраивается под любые экраны — мобильные, планшеты, десктопы." />
+            <FeatureCard title="SEO оптимизация" desc="Чистая семантика и быстрая загрузка — сайт любят поисковики." />
+            <FeatureCard title="Контакты и формы" desc="Готовые формы обратной связи и интеграции со сторонними сервиса" />
+          </div>
+        </section>
+
+        {/* Pricing */}
+        <section id="pricing" className="mt-16">
+          <h3 className="text-2xl font-bold">Тарифы</h3>
+          <p className="text-gray-600 mt-2">Выберите план, который подходит вашему проекту.</p>
+
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <PriceCard name="Starter" price="Free" bullets={["1 страница","Базовый шаблон","Поддержка сообщества"]} />
+            <PriceCard name="Pro" price="$9/mo" bullets={["До 10 страниц","Кастомизация","Email поддержка"]} highlight />
+            <PriceCard name="Business" price="$29/mo" bullets={["Неограниченно страниц","Приоритетная поддержка","Интеграции API"]} />
+          </div>
+        </section>
+
+        {/* Contact */}
+        <section id="contact" className="mt-16 bg-white p-6 rounded-2xl shadow">
+          <h3 className="text-xl font-semibold">Связаться с нами</h3>
+          <p className="text-gray-600 mt-2">Оставьте сообщение — мы ответим в течение рабочего дня.</p>
+
+          <form className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input className="p-3 border rounded-md" placeholder="Ваше имя" />
+            <input className="p-3 border rounded-md" placeholder="Email" />
+            <input className="p-3 border rounded-md md:col-span-2" placeholder="Тема" />
+            <textarea className="p-3 border rounded-md md:col-span-2" rows={5} placeholder="Сообщение" />
+            <div className="md:col-span-2 flex justify-end">
+              <button type="button" className="px-5 py-3 rounded-lg bg-indigo-600 text-white">Отправить</button>
+            </div>
+          </form>
+        </section>
+      </main>
+
+      <footer className="bg-white border-t mt-12">
+        <div className="max-w-6xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="text-sm text-gray-600">© {new Date().getFullYear()} SiteStudio — Все права защищены</div>
+          <div className="flex gap-4 text-sm">
+            <a href="#" className="hover:underline">Политика конфиденциальности</a>
+            <a href="#" className="hover:underline">Условия</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+// --- Small presentational components ---
+function FeatureCard({ title, desc }){
+  return (
+    <div className="bg-white p-5 rounded-xl shadow-sm">
+      <div className="w-12 h-12 rounded-md bg-indigo-50 flex items-center justify-center font-bold">✓</div>
+      <h4 className="mt-3 font-semibold">{title}</h4>
+      <p className="mt-2 text-sm text-gray-600">{desc}</p>
+    </div>
+  );
+}
+
+function PriceCard({ name, price, bullets = [], highlight }){
+  return (
+    <div className={`p-6 rounded-xl border ${highlight ? 'border-indigo-300 shadow-lg' : 'border-gray-200'} bg-white`}>
+      <div className="flex items-center justify-between">
+        <h4 className="font-semibold">{name}</h4>
+        <div className="text-lg font-bold">{price}</div>
+      </div>
+      <ul className="mt-4 space-y-2 text-sm text-gray-600">
+        {bullets.map((b,i)=> <li key={i}>• {b}</li>)}
+      </ul>
+      <div className="mt-6">
+        <button className={`w-full px-4 py-3 rounded-md ${highlight ? 'bg-indigo-600 text-white' : 'border'}`}>Выбрать</button>
+      </div>
+    </div>
+  );
+}
